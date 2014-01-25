@@ -12,7 +12,7 @@ function linkToDropbox() {
 	var client = new Dropbox.Client({key: "syfz8zk7vubfh3f"});
 
 	//Try to finish OAuth authorization
-	if(client.isAuthenticated()) {
+	if(!client.isAuthenticated()) {
 		client.authenticate({interactive: true}, function (error) {
 			if(error) {
 				alert('Authentication error:' + error);
