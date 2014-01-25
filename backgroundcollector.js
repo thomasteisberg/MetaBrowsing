@@ -1,5 +1,3 @@
-alert("bg page loaded");
-
 // Temporary log of timestamps and tabs visited
 historyLog = new Array();
 
@@ -15,7 +13,7 @@ recordPage = function (tabs) {
 	}
 	
 	// Schedule the next tab request
-	setTimeout(getPage, 1000);
+	setTimeout(getPage, 100);
 }
 
 // Requests the active tab from chrome. Response is handled by
@@ -26,3 +24,20 @@ getPage = function () {
 
 // Initiate looping getPage -> recordPage -> getPage calls
 getPage();
+
+// Link button click to opening the raw data display page (probably temporary)
+chrome.browserAction.onClicked.addListener(function(activeTab)
+{
+    chrome.tabs.create({ url: "rawdata.html" });
+});
+
+// Handle requests for the data from other parts of the extension
+
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    console.log(sender.tab ?
+                "from a content script:" + sender.tab.url :
+                "from the extension");
+    if (request.type == "currDataReq")
+      sendResponse({historyLog: historyLog});
+  });
