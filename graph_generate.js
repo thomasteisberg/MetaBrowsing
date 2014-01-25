@@ -21,14 +21,27 @@ function getTopSiteData() {
         return siteVisits;
 }
 
-var data = getTopSiteData();
+function largest_val(matrix) {
+    var x = 0;
+    for (i = 0; i < matrix.length; ++i) {
+        if (x < matrix[i][0]) {
+            x = matrix[i][0];
+        }
+    }
+    return x;
+}
+
+var data = [
+    [11, "Facebook"],
+    [25, "Stanford"],
+    [37, "Swag swag like Caillou"],
+    [45, "ballaaaa"]
+]
 
 // but actually, the data will come from a server query
 
-var data_copy = data;
-
 var x = d3.scale.linear()
-    .domain([0, 18])
+    .domain([0, largest_val(data)])
     .range([0, 960]);
 
 d3.select(".sitenames")
@@ -39,7 +52,7 @@ d3.select(".sitenames")
 
 d3.select(".chart")
   .selectAll("div")
-    .data(data_copy)
+    .data(data)
   .enter().append("div")
     .transition().duration(1200).delay(200)
     .style("width", function(d) {return x(d[0]) + "px";} )
