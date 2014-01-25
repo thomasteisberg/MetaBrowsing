@@ -1,0 +1,19 @@
+body{
+	background-color: grey;
+}
+
+#logobar{
+	height: 150px;
+	width: 100%;
+	background-color: black;
+}
+
+#thumbnailarea{
+	
+}
+
+.viz{
+	width: 250px;
+	height: 400px;
+	background-color: blue;
+}
