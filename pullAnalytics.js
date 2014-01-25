@@ -15,7 +15,6 @@ function getTopSiteData() {
 
 	db.transaction(function (tx) {
 		tx.executeSql("SELECT * FROM analytics ORDER BY visits DESC LIMIT 10", [], function (tx, results) {
-			console.log("hiya");
 			for(var i = 0;i < results.rows.length;i++) {
 				var row = results.rows.item(i);
 				var subArray = [row.visits, row.taburl];
