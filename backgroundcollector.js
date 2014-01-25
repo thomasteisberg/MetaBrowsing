@@ -1,3 +1,4 @@
+
 // Settings
 var QUERY_FREQUENCY = 100; // How often (in ms) to query the current tab
 var FOCUS_TIME = 1000; // How long (in ms) should the user be looking at a
@@ -25,9 +26,14 @@ var recordPage = function (tabs) {
 	// Current timestamp
 	var millis = +new Date();
 	
+	var parser = document.createElement('a');
+	parser.href = tabs[0].url;
+ 
+	var parsedurl = parser.hostname;
+	
 	// Track when focus switched to this page
-	if(tabs[0].url != lastUrlSeen){
-		lastUrlSeen = tabs[0].url;
+	if(parsedurl != lastUrlSeen){
+		lastUrlSeen = parsedurl;
 		lastUrlFocusBeginning = millis;
 	}
 	
@@ -35,10 +41,10 @@ var recordPage = function (tabs) {
 	// and they have been on this tab for at least 2 seconds
 	if(millis - lastUrlFocusBeginning > FOCUS_TIME &&
 			(historyLog.length == 0 ||
-				tabs[0].url != historyLog[historyLog.length - 1].taburl)){
-		historyLog[historyLog.length] = {taburl: tabs[0].url, timestamp: Math.round(lastUrlFocusBeginning/1000)};
+				parsedurl != historyLog[historyLog.length - 1].taburl)){
+		historyLog[historyLog.length] = {taburl: parsedurl, timestamp: Math.round(lastUrlFocusBeginning/1000)};
 		db.transaction(function (tx) {
-			tx.executeSql('INSERT INTO raw (timestamp, taburl) VALUES (?, ?)', [Math.round(lastUrlFocusBeginning/1000), tabs[0].url]);
+			tx.executeSql('INSERT INTO raw (timestamp, taburl) VALUES (?, ?)', [Math.round(lastUrlFocusBeginning/1000), parsedurl]);
 		});
 		// Timestamp stored as a unix style timestamp
 	}
@@ -54,7 +60,7 @@ var getPage = function () {
 }
 
 // Initiate looping getPage -> recordPage -> getPage calls
-getPage();
+window.onload = getPage;
 
 // Link button click to opening the raw data display page (probably temporary)
 chrome.browserAction.onClicked.addListener(function(activeTab)
