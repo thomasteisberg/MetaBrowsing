@@ -23,8 +23,9 @@ function getTopSiteData() {
 				var subArray = [avg, row.taburl];
 				siteTime.push(subArray);
 				console.log(siteTime[i]);
-				buildGraph(siteTime);
 			}
+			console.log(siteTime);
+			buildGraph(siteTime);
 		});
 	});
 
