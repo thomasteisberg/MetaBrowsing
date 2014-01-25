@@ -41,7 +41,7 @@ var x = d3.scale.linear()
 
 d3.select(".sitenames")
   .selectAll("h4")
-    .data(data_copy)
+    .data(data)
   .enter().append("h4")
     .text(function(d) { return d[1]; });
 
