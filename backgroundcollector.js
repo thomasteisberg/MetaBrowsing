@@ -59,6 +59,6 @@ chrome.runtime.onMessage.addListener(
     console.log(sender.tab ?
                 "from a content script:" + sender.tab.url :
                 "from the extension");
-    if (request.type == "currDataReq")
+    if (request.type == "cacheDataReq")
       sendResponse({historyLog: historyLog});
   });

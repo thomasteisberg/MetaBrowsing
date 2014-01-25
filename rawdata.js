@@ -22,12 +22,12 @@ window.onload = function() {
 	 
 	// On page load request data
 	$(document).ready(function() {
-		  chrome.runtime.sendMessage({type: "currDataReq"}, processData);
+		  chrome.runtime.sendMessage({type: "cacheDataReq"}, processData);
 	}); 
 	// Also request data on page focus (i.e. when you return to this tab)
 	$(window).focus(function() {
 			console.log("focus");
-		  chrome.runtime.sendMessage({type: "currDataReq"}, processData);
+		  chrome.runtime.sendMessage({type: "cacheDataReq"}, processData);
 	}); 
 
 }
