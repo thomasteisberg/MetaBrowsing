@@ -31,6 +31,9 @@ var recordPage = function (tabs) {
  
 	var parsedurl = parser.hostname;
 	
+	var r = /:\/\/(.[^/]+)/;
+	parsedurl = parser.href.match(r)[1];
+
 	// Track when focus switched to this page
 	if(parsedurl != lastUrlSeen){
 		lastUrlSeen = parsedurl;
