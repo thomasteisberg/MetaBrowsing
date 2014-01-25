@@ -21,10 +21,10 @@ function linkToDropbox() {
 
 	//client.signOut();
 
-	/*if(client.isAuthenticated()) {
+	if(client.isAuthenticated()) {
 		//Client is authenticated.  Display UI.
 		console.log("authenticated");
-	}*/
+	}
 
 	//createDataStore(client);
 }

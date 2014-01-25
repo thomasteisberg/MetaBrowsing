@@ -44,10 +44,7 @@
   },
 
   "web_accessible_resources": [
-    "http://*/*",
-    "https://*/*",
-    "<all_urls>",
-    "chrome-extension://mlabibnomhfmephibijgghejmmmbigpi/chrome_oauth_receiver.html&response_type=token&state=oas_hquul1r4_0.1qwu7sh12pqzolxr"
+    "mlabibnomhfmephibijgghejmmmbigpi/*"
   ],
   
   "content_security_policy": "script-src 'self' https://www.dropbox.com; object-src 'self'",
