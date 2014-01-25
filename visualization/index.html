@@ -2,22 +2,44 @@
 <html>
 	<head>
 		<title>META</title>
-		<link rel="stylesheet" href="index.css" ></style>
+		<!--<link rel="stylesheet" href="index.css" > -->
+		<link rel="stylesheet" href="mystyle.css">
+		<link rel="stylesheet" href="../lib/bootstrap.css">
 	</head>
-	<body>
-		<div id="logobar">
-			<h1>META</h1>
+	<body style="background-color: #212121">
+		<div class="jumbotron"> 
+			<h1> META - I'm so meta even this acronym...</h1>
+			<p> Here you can view visualizations for different metrics of your web activity. Enjoy! </p>
 		</div>
-		<div id="thumbnailarea">
-			<a href="favoritesites.html">
-				<div class="viz">
-					<img src="" class="thumbnail" />
-					<p>Favorite Sites</p>
-				</div>
-			</a>
+		<div class="container">
+		<div class="row"> 
+			<div class="col-md-3">
+				<a href="favoritesites.html">
+					<h3 style="text-align:center; color:white;">
+						<button type="button" class="btn btn-primary">Favorite Sites</button>
+					</h3>
+				</a>
+				<img src="graph_logo-01.png" width="100%" class="img-circle">
+			</div>
+
+			<div class="col-md-3">
+				<a href="#">
+					<h3 style="text-align:center; color:white;">
+						<button type="button" class="btn btn-primary">Primary</button>
+					</h3>
+				</a>
+				<img src="graph_logo-02.png" width="100%" class="img-circle">
+			</div>
+
+			<div class="col-md-3">
+				<a href="monstrosity.html">
+					<h3 style="text-align:center; color:white;">
+						<button type="button" class="btn btn-primary">Link Map</button>
+					</h3>
+				</a>
+				<img src="linkmap.png" width="100%" class="img-circle">
+			</div>
 		</div>
-		<div id="footer">
-			<em>i'm so meta, even this acronym</em>
 		</div>
 	</body>
 </html>
