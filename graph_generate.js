@@ -33,7 +33,7 @@ function largest_val(matrix) {
     return x;
 }
 
-function buildGraph(data_copy) {
+function buildGraph(data) {
 
 var x = d3.scale.linear()
     .domain([0, largest_val(data)])
