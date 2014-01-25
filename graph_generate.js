@@ -23,7 +23,6 @@ function getTopSiteData() {
         }); 
 }
 
-<<<<<<< HEAD
 function largest_val(matrix) {
     var x = 0;
     for (i = 0; i < matrix.length; ++i) {
@@ -33,14 +32,8 @@ function largest_val(matrix) {
     }
     return x;
 }
-=======
+
 function buildGraph(data_copy) {
-
->>>>>>> 0dda7fc827ef17617a122943fc89762408c466e9
-
-<<<<<<< HEAD
-=======
->>>>>>> 0dda7fc827ef17617a122943fc89762408c466e9
 
 var x = d3.scale.linear()
     .domain([0, largest_val(data)])
