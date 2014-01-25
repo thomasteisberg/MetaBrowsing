@@ -12,19 +12,21 @@ function linkToDropbox() {
 	var client = new Dropbox.Client({key: "syfz8zk7vubfh3f"});
 
 	//Try to finish OAuth authorization
-	client.authenticate({interactive: true}, function (error) {
-		if(error) {
-			alert('Authentication error:' + error);
-		}
-	});
+	if(client.isAuthenticated()) {
+		client.authenticate({interactive: true}, function (error) {
+			if(error) {
+				alert('Authentication error:' + error);
+			}
+		});
+	}
 	//client.authenticate();
 
 	//client.signOut();
 
-	if(client.isAuthenticated()) {
+	/*if(client.isAuthenticated()) {
 		//Client is authenticated.  Display UI.
 		console.log("authenticated");
-	}
+	}*/
 
 	//createDataStore(client);
 }
