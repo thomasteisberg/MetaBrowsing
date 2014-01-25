@@ -31,11 +31,3 @@ function linkToDropbox() {
 	//createDataStore(client);
 }
 
-function createDataStore(client) {
-	var datastoreManager = client.getDatastoreManager();
-	datastoreManager.openDefaultDatastore(function (error, datastore) {
-		if(error) {
-			alert('Error opening default datastore' + error);
-		}
-	});
-}
