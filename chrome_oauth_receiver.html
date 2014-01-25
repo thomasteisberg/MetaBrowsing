@@ -1,39 +1,13 @@
-//Javascript goes here.
-//Much good.
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<script src="dropbox-datastores-1.0.0.js" type="text/javascript"></script>
+	</head>
+	<title></title>
+	<body>
+		Hello world!!!
 
-linkToDropbox();
+		<script src="DropboxJSShenanigans.js" type="text/javascript"></script>
 
-
-function linkToDropbox() {
-	console.log("working");
-
-	//Dropbox - create a client
-	//key determines for which app
-	var client = new Dropbox.Client({key: "syfz8zk7vubfh3f"});
-
-	//Try to finish OAuth authorization
-	client.authenticate({interactive: true}, function (error) {
-		if(error) {
-			alert('Authentication error:' + error);
-		}
-	});
-	//client.authenticate();
-
-	//client.signOut();
-
-	/*if(client.isAuthenticated()) {
-		//Client is authenticated.  Display UI.
-		console.log("authenticated");
-	}*/
-
-	//createDataStore(client);
-}
-
-function createDataStore(client) {
-	var datastoreManager = client.getDatastoreManager();
-	datastoreManager.openDefaultDatastore(function (error, datastore) {
-		if(error) {
-			alert('Error opening default datastore' + error);
-		}
-	});
-}
+	</body>
+</html>
