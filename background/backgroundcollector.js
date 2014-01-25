@@ -65,7 +65,7 @@ window.onload = getPage;
 // Link button click to opening the raw data display page (probably temporary)
 chrome.browserAction.onClicked.addListener(function(activeTab)
 {
-    chrome.tabs.create({ url: "../visualization/rawdata.html" });
+    chrome.tabs.create({ url: "../visualization/index.html" });
 });
 
 // Handle requests for the data from other parts of the extension

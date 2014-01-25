@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF8">
+		<script src="../lib/d3.v3.js" charset="utf-8"></script>
+		<script src="../lib/jquery-2.1.0.js"></script>
+		<title>The Monstrosity</title>
+		<link rel="stylesheet" type="text/css" href="monstrosity.css"/>
+		<link rel="stylesheet" type="text/css" href="mystyle.css">
+		<link rel="stylesheet" type="text/css" href="../lib/bootstrap.css">
+	</head>
+	<body>
+  	<ul class="nav nav-pills" style="margin:10px">
+  		<li class="active"><a href="#">Most Visited</a></li>
+  		<li><a href="#">Time Between Visits</a></li>
+ 		 	<li><a href="averagestay.html">Average Stay</a></li>
+		</ul>
+    <div id="main">
+    	<div id="starturlform">
+    		<span id="starturltext">Origin Site: </span>
+    		<input type="text" id="starturlinput" value="www.facebook.com"></input>
+    		<input type="submit" id="starturlsubmit" value="Visualize"></input>
+    	</div>
+    	<div id="visualization">
+		    <div id="sequence"></div>
+		    <div id="chart">
+		      <div id="explanation" style="visibility: hidden;">
+		        <span id="percentage"></span><br/>
+		        chance of getting here after visiting <span id="starturl"></span>
+		      </div>
+		    </div>
+		  </div>
+    </div>
+    <div id="sidebar">
+      <input type="checkbox" id="togglelegend"> Legend<br/>
+      <div id="legend" style="visibility: hidden;"></div>
+    </div>
+    <script type="text/javascript" src="monstrosity.js"></script>
+  </body>
+</html>
