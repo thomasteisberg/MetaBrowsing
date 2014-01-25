@@ -9,7 +9,7 @@ function getTopSiteData() {
         var db = openDatabase('focusHistoryDB', '1.0', 'Page Focus History', 2 * 1024 * 1024);
 
         db.transaction(function (tx) {
-                tx.executeSql("SELECT * FROM analytics ORDER BY visits DESC LIMIT 3", [], function (tx, results) {
+                tx.executeSql("SELECT * FROM analytics ORDER BY visits DESC LIMIT 10", [], function (tx, results) {
                         for(var i = 0;i < results.rows.length;i++) {
                                 var row = results.rows.item(i);
                                 var subArray = [row.visits, row.taburl];
