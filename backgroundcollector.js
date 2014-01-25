@@ -6,6 +6,12 @@ var FOCUS_TIME = 1000; // How long (in ms) should the user be looking at a
 // Temporary log of timestamps and tabs visited
 var historyLog = new Array();
 
+// WebSQL Database
+var db = openDatabase('focusHistoryDB', '1.0', 'Page Focus History', 2 * 1024 * 1024);
+db.transaction(function (tx) {
+  tx.executeSql('CREATE TABLE IF NOT EXISTS raw (timestamp int, taburl string)');
+});
+
 // The last URL the user was looking at
 var lastUrlSeen = "";
 // Milliseconds timestamp of when the user started looking at that URL
@@ -31,6 +37,9 @@ var recordPage = function (tabs) {
 			(historyLog.length == 0 ||
 				tabs[0].url != historyLog[historyLog.length - 1].taburl)){
 		historyLog[historyLog.length] = {taburl: tabs[0].url, timestamp: Math.round(lastUrlFocusBeginning/1000)};
+		db.transaction(function (tx) {
+			tx.executeSql('INSERT INTO raw (timestamp, taburl) VALUES (?, ?)', [Math.round(lastUrlFocusBeginning/1000), tabs[0].url]);
+		});
 		// Timestamp stored as a unix style timestamp
 	}
 	
@@ -62,3 +71,11 @@ chrome.runtime.onMessage.addListener(
     if (request.type == "cacheDataReq")
       sendResponse({historyLog: historyLog});
   });
+  
+  /*
+  tx.executeSql('SELECT * FROM foo', [], function (tx, results) {
+  var len = results.rows.length, i;
+  for (i = 0; i < len; i++) {
+    alert(results.rows.item(i).text);
+  }
+});*/
