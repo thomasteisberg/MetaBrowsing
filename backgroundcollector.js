@@ -1,0 +1,1 @@
+alert("background page loaded");
