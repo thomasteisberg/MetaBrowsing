@@ -2,24 +2,23 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="mystyle.css">
-
 	<link rel="stylesheet" type="text/css" href="../lib/bootstrap.css">
 </head>
 <body style ="background-color:#212121">
 	
 	<ul class="nav nav-pills" style="margin:10px">
 		<li><a href="index.html"> Home </a> </li>
-  		<li class="active"><a>Most Visited</a></li>
- 		<li><a href="averagestay.html">Average Stay</a></li>
+  		<li><a href="favoritesites.html">Most Visited</a></li>
+ 		<li class="active"><a href="averagestay.html">Average Stay</a></li>
  		<li><a href="#"> Link Map </a></li>
 	</ul>
 
 	<div class="wrapper">
-		<div class="title" style="color:white"> <h1> Favorite Sites </h1> </div>
+		<div class="title" style="color:white"> <h1> Average Time Spent on Sites </h1> </div>
 		<div class="sitenames"></div>
 		<div class="chart"></div>
 	</div>
 
 	<script src="../lib/d3.v3.js"  charset="utf-8"></script>
-	<script src="graph_generate.js"  charset="utf-8"></script>
+	<script src="pullAverageAnalytics.js" charset="utf-8"></script>
 </body>
