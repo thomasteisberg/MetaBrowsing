@@ -36,7 +36,7 @@
   ],
   
   "background": {
-  	"scripts": ["backgroundcollector.js"]
+  	"scripts": ["background/backgroundcollector.js"]
  	},
  	
  	"browser_action": {

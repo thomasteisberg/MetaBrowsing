@@ -1,6 +1,6 @@
 // Load JQuery (local copy)
 jq=document.createElement('script');
-jq.src='jquery-2.1.0.js';
+jq.src='../lib/jquery-2.1.0.js';
 document.getElementsByTagName('head')[0].appendChild(jq);
 
 // Open database
