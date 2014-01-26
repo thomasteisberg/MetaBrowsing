@@ -80,7 +80,6 @@ function fuckThaPolice(sequence, startSite)
 			}
 		}
 	}
-	console.log(csv);
 	return generateCSVText(csv);
 }
 
