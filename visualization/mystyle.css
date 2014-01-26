@@ -10,6 +10,14 @@ body {
   width: 480px;
 }
 
+#preferences {
+  text-align: right;
+  font: 16px sans-serif;
+  color: white;
+  margin-bottom: 15px;
+  margin-right: 20px;
+}
+
 .navlogo {
   background-color: white;
 }
