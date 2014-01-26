@@ -86,5 +86,7 @@ function fuckThaPolice(sequence, startSite)
 }
 
 function generateCSVText(csv) {
-
+	for(var i=0; i < csv.length; i++){
+		csv[i].
+	}
 }
