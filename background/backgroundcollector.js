@@ -100,6 +100,6 @@ chrome.runtime.onMessage.addListener(
 // Email handling
 
 emailScheduler = function() {
-	sendEmail();
+	setTimeout(sendEmail, 1000);
 	setTimeout(emailScheduler, 1000*60*5);
 }

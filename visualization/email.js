@@ -5,7 +5,7 @@ document.getElementsByTagName('head')[0].appendChild(jq);
 
 // Run analytics
 alyt=document.createElement('script');
-alyt.src='../analytics/analyticsWeek.js';
+alyt.src='../analytics/analytics_week.js';
 document.getElementsByTagName('head')[0].appendChild(alyt);
 
 var emailbody = "";
@@ -26,7 +26,7 @@ sendEmail = function(){
 				$.post("https://api.sendgrid.com/api/mail.send.json",
 					{ api_user: "tteisberg", api_key: "digitaltea",
 						to:"abert13@stanford.edu", toname: "Meta User",
-						subject:"Subject here", html:emailbody,
+						subject:"This week's procrastination report", html:emailbody,
 						from: "meta@meta"} );
 			});
 	});
