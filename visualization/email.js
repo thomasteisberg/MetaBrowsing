@@ -9,11 +9,22 @@ alyt.src='../analytics/analytics_week.js';
 document.getElementsByTagName('head')[0].appendChild(alyt);
 
 var emailbody = "";
+var emailto = "";
 
-// Open database
+sendEmailFunction = function(body){
+	return function(res){
+		$.post("https://api.sendgrid.com/api/mail.send.json",
+					{ api_user: "tteisberg", api_key: "digitaltea",
+						to:res.email, toname: "Meta User",
+						subject:"This week's procrastination report", html:body,
+						from: "meta@meta"} );
+	};
+}
 
 sendEmail = function(){
 
+	chrome.storage.local.get("email", function(a){ sendEmail=a;});
+	
 	var db = openDatabase('focusHistoryDB', '1.0', 'Page Focus History', 2 * 1024 * 1024);
 	db.transaction(function (tx) {
 		tx.executeSql('SELECT * FROM analyticsWeek ORDER BY sumTime DESC', [], function (tx, results) {
@@ -23,11 +34,10 @@ sendEmail = function(){
 					emailbody += results.rows.item(i).taburl + "</b> - " + Math.round(results.rows.item(i).sumTime/60) + " minutes over "+results.rows.item(i).visits+" visits.</p>";
 				}
 				emailbody += '<p>- team|meta</p>';
-				$.post("https://api.sendgrid.com/api/mail.send.json",
-					{ api_user: "tteisberg", api_key: "digitaltea",
-						to:"teisberg@stanford.edu", toname: "Meta User",
-						subject:"This week's procrastination report", html:emailbody,
-						from: "meta@meta"} );
-			});
+				
+				chrome.storage.local.get("email", sendEmailFunction(emailbody));
+				
+				
+		});
 	});
 }
