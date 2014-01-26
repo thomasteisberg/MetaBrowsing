@@ -12,17 +12,18 @@ db.transaction(function (tx) {
 
 db.transaction(function (tx) {
 	tx.executeSql('SELECT * FROM raw', [], function (tx, results) {
-		var len = results.rows.length, i;
+		var len = results.rows.length;
 		var lastTimestamp = results.rows.item(0).timestamp;
 		for (i = 0; i < len; i++) {
 			var ts = results.rows.item(i).timestamp;
 			var turl = results.rows.item(i).taburl;
-			var elapsedTime = ts - lastTimestamp;
+			var elapsedTime = Number(ts) - Number(lastTimestamp);
+			lastTimestamp = ts;
 			db.transaction(function(lturl, lelapsed){ return function(tx2){
 				tx2.executeSql('INSERT OR REPLACE INTO analytics (taburl, visits, sumTime) VALUES ("'+lturl+'", COALESCE(1+(SELECT visits FROM analytics WHERE taburl = "'+lturl+'"), 1), COALESCE('+lelapsed+'+(SELECT sumTime FROM analytics WHERE taburl = "'+lturl+'"), '+lelapsed+'))');
 
 			};}(turl, elapsedTime));
-			lastTimestamp = ts;
+			
 		}
   });
 });
