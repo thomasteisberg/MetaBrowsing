@@ -3,9 +3,7 @@ jq=document.createElement('script');
 jq.src='../lib/jquery-2.1.0.js';
 document.getElementsByTagName('head')[0].appendChild(jq);
 
-createCSV("www.facebook.com");
-
-function createCSV(startSite) {
+createCSV = function(startSite) {
 	var db = openDatabase('focusHistoryDB', '1.0', 'Page Focus History', 2 * 1024 * 1024);
 
 	var sequence = new Array();
@@ -17,10 +15,11 @@ function createCSV(startSite) {
 				var row = results.rows.item(i);
 				sequence.push(row.taburl);
 			}
-			fuckThaPolice(sequence, startSite);
+			var csvfile = fuckThaPolice(sequence, startSite);
+			chrome.runtime.sendMessage({type: "csvData", csvfile: csvfile});
 		});
 	});
-}
+};
 
 function fuckThaPolice(sequence, startSite)
 {
@@ -82,11 +81,13 @@ function fuckThaPolice(sequence, startSite)
 		}
 	}
 	console.log(csv);
-	generateCSVText(csv);
+	return generateCSVText(csv);
 }
 
 function generateCSVText(csv) {
-	for(var i=0; i < csv.length; i++){
-		csv[i].
-	}
+	var csvfile = "";
+	for(var index in csv) {
+  	csvfile += index + "," + csv[index] + "\n";
+  }
+  return csvfile;
 }

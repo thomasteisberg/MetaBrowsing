@@ -1,3 +1,4 @@
+
 // Dimensions of sunburst.
 var width = 750;
 var height = 600;
@@ -332,13 +333,28 @@ changeOriginUrl = function(){
  
 // Use d3.text and d3.csv.parseRows so that we do not need to have a header
 // row, and can receive the csv as an array of arrays.
-d3.text("../analytics/monstrosity-test.csv", function(text) {
-  var csv = d3.csv.parseRows(text);
-  var json = buildHierarchy(csv);
-  createVisualization(json);
-});
+//d3.text("../analytics/monstrosity-test.csv", function(text) {
+//  var csv = d3.csv.parseRows(text);
+//  var json = buildHierarchy(csv);
+//  createVisualization(json);
+//});
+
+	createCSV(originurl);
+	
 }
 
 $('#starturlsubmit').click(changeOriginUrl);
-changeOriginUrl();
+$(document).ready(changeOriginUrl);
+
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    console.log(sender.tab ?
+                "from a content script:" + sender.tab.url :
+                "from the extension");
+    if (request.type == "csvData"){
+    	var csv = d3.csv.parseRows(request.csvfile);
+			var json = buildHierarchy(csv);
+			createVisualization(json);
+    }
+  });
 
