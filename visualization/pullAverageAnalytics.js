@@ -19,7 +19,7 @@ function getTopSiteData() {
 				var row = results.rows.item(i);
 				var visits = row.visits;
 				var time = row.sumTime;
-				var avg = parseInt(time)/parseInt(visits)/1000;
+				var avg = parseInt(time)/parseInt(visits)/100;
 				var subArray = [avg, row.taburl];
 				siteTime.push(subArray);
 				console.log(siteTime[i]);
