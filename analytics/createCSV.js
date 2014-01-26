@@ -62,7 +62,7 @@ function fuckThaPolice(sequence, startSite)
 			if(currentPathWordLength > 0 && currentPathWordLength < n)
 			{
 				//if there's already a chain going
-				currentPath += "-" + sequence[i];
+				currentPath += "|" + sequence[i];
 				currentPathWordLength++;
 			}
 			else if(currentPathWordLength == n)

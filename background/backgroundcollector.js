@@ -29,10 +29,7 @@ var recordPage = function (tabs) {
 	var parser = document.createElement('a');
 	parser.href = tabs[0].url;
  
-	var parsedurl = parser.hostname;
-	
-	var r = /:\/\/(.[^/]+)/;
-	parsedurl = parser.href.match(r)[1];
+	var parsedurl = parser.hostname.replace('www.', '');
 
 	// Track when focus switched to this page
 	if(parsedurl != lastUrlSeen){

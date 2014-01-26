@@ -22,6 +22,7 @@ db.transaction(function (tx) {
 				tx2.executeSql('INSERT OR REPLACE INTO analytics (taburl, visits, sumTime) VALUES ("'+lturl+'", COALESCE(1+(SELECT visits FROM analytics WHERE taburl = "'+lturl+'"), 1), COALESCE('+lelapsed+'+(SELECT sumTime FROM analytics WHERE taburl = "'+lturl+'"), '+lelapsed+'))');
 
 			};}(turl, elapsedTime));
+			lastTimestamp = ts;
 		}
   });
 });
