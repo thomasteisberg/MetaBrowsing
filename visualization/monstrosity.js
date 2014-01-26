@@ -9,16 +9,6 @@ var b = {
   w: 120, h: 30, s: 3, t: 10
 };
  
-// Mapping of step names to colors.
-var colors = {
-  "home": "#5687d1",
-  "product": "#7b615c",
-  "search": "#de783b",
-  "account": "#6ab975",
-  "other": "#a173d1",
-  "end": "#bbbbbb"
-};
- 
 // Main function to draw and set up the visualization, once we have the data.
 function createVisualization(json) {
  
@@ -126,7 +116,6 @@ function getAncestors(node) {
 function initializeBreadcrumbTrail() {
   // Add the svg area.
   var trail = d3.select("#sequence").append("svg:svg")
-      .attr("width", width)
       .attr("height", 50)
       .attr("id", "trail");
   // Add the label at the end, for the percentage.
@@ -261,6 +250,12 @@ function colorHash(str){
 changeOriginUrl = function(){
 	var originurl = $('#starturlinput').val();
 	
+	originurl = originurl.replace('www.', '');
+	originurl = originurl.replace('http:\/\/', '');
+	if(originurl.indexOf('/') > 0) originurl = originurl.substring(0, originurl.indexOf('/'));
+	
+	$('#starturlinput').val(originurl);
+	
 	//generateCSV(originurl);
 	$('#sequence').html("");
 	$('#chart').html('<div id="explanation" style="visibility: hidden;"><span id="percentage"></span><br/> chance of getting here after visiting <span id="starturl"></span></div>');
@@ -299,7 +294,7 @@ changeOriginUrl = function(){
 	
 }
 
-$('#starturlsubmit').click(changeOriginUrl);
+$('#starturlform').submit(function(){changeOriginUrl(); return false;});
 $(document).ready(changeOriginUrl);
 
 chrome.runtime.onMessage.addListener(

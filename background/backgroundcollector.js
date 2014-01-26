@@ -42,11 +42,13 @@ var recordPage = function (tabs) {
 	if(millis - lastUrlFocusBeginning > FOCUS_TIME &&
 			(historyLog.length == 0 ||
 				parsedurl != historyLog[historyLog.length - 1].taburl)){
-		historyLog[historyLog.length] = {taburl: parsedurl, timestamp: Math.round(lastUrlFocusBeginning/1000)};
-		db.transaction(function (tx) {
-			tx.executeSql('INSERT INTO raw (timestamp, taburl) VALUES (?, ?)', [Math.round(lastUrlFocusBeginning/1000), parsedurl]);
-		});
-		// Timestamp stored as a unix style timestamp
+				if(parsedurl != "" && parsedurl != "mlabibnomhfmephibijgghejmmmbigpi"){
+					historyLog[historyLog.length] = {taburl: parsedurl, timestamp: Math.round(lastUrlFocusBeginning/1000)};
+					db.transaction(function (tx) {
+						tx.executeSql('INSERT INTO raw (timestamp, taburl) VALUES (?, ?)', [Math.round(lastUrlFocusBeginning/1000), parsedurl]);
+					});
+					// Timestamp stored as a unix style timestamp
+				}
 	}
 	
 	// Schedule the next tab request

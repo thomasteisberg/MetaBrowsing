@@ -27,7 +27,7 @@ function fuckThaPolice(sequence, startSite)
 	//faking my way through a map here...
 
 	var csv = {};
-	var n = 5;
+	var n = 10;
 	currentPath = "";
 	currentPathWordLength = 0;
 	for(i = 0;i < sequence.length;i++)
