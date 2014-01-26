@@ -66,6 +66,7 @@
           var w = 10
           ctx.fillStyle = (node.data.alone) ? "orange" : "#4188d2"
           ctx.fillRect(pt.x-w/2, pt.y-w/2, w,w)
+          
         })    			
       },
       

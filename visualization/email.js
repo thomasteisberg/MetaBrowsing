@@ -12,8 +12,8 @@ var emailbody = "";
 
 // Open database
 
-
 sendEmail = function(){
+
 	var db = openDatabase('focusHistoryDB', '1.0', 'Page Focus History', 2 * 1024 * 1024);
 	db.transaction(function (tx) {
 		tx.executeSql('SELECT * FROM analyticsWeek ORDER BY sumTime DESC', [], function (tx, results) {

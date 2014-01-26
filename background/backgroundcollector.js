@@ -79,27 +79,23 @@ chrome.browserAction.onClicked.addListener(function(activeTab)
     chrome.tabs.create({ url: "../visualization/index.html" });
 });
 
-// Handle requests for the data from other parts of the extension
-chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
-    console.log(sender.tab ?
-                "from a content script:" + sender.tab.url :
-                "from the extension");
-    if (request.type == "cacheDataReq")
-      sendResponse({historyLog: historyLog});
-  });
-  
-  /*
-  tx.executeSql('SELECT * FROM foo', [], function (tx, results) {
-  var len = results.rows.length, i;
-  for (i = 0; i < len; i++) {
-    alert(results.rows.item(i).text);
-  }
-});*/
+
 
 // Email handling
 
+var fridayMailSent = false;
+
 emailScheduler = function() {
-	setTimeout(sendEmail, 1000);
-	setTimeout(emailScheduler, 1000*60*5);
+	d = new Date();
+	if(!fridayMailSent && d.getDay() == 5){
+		chrome.storage.local.get("emailBool", function(a){
+			if(a){
+				setTimeout(sendEmail, 1000);
+				fridayMailSent = true;
+			}
+		});
+	}else{
+		fridayMailSent = false;
+	}
+	setTimeout(emailScheduler, 1000*60*60*12);
 }
