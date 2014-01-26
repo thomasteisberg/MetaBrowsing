@@ -49,7 +49,7 @@ d3.select(".chart")
   .selectAll("div")
     .data(data)
   .enter().append("div")
-    .transition().duration(1200).delay(200)
+    .transition().duration(1200)
     .style("width", function(d) {return x(d[0]) + "px";} )
     .text(function(d) {return d[0];});
 
