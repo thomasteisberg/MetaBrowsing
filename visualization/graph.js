@@ -128,7 +128,7 @@
   }    
 
   $(document).ready(function(){
-    sys = arbor.ParticleSystem(1000, 600, 0.5) // create the system with sensible repulsion/stiffness/friction
+    sys = arbor.ParticleSystem(800, 600, 0.8) // create the system with sensible repulsion/stiffness/friction
     sys.parameters({gravity:true}) // use center-gravity to make the graph settle nicely (ymmv)
     sys.renderer = Renderer("#viewport") // our newly created renderer will have its .init() method called shortly by sys...
     
@@ -139,7 +139,7 @@
 				var len = results.rows.length;
 				var lastTimestamp = results.rows.item(0).timestamp;
 				var lastUrl = results.rows.item(0).taburl;
-				if(len > 25) len = 15;
+				if(len > 40) len = 40;
 				for (i = 0; i < len; i++) {
 					var ts = results.rows.item(i).timestamp;
 					var turl = results.rows.item(i).taburl;
