@@ -45,6 +45,7 @@ right: 0;
 #sequence text{
   font-weight: 600;
   fill: #fff;
+  stroke: #ffffff;
 }
  
 #chart {
@@ -67,4 +68,12 @@ right: 0;
  
 #percentage {
   font-size: 2.5em;
+}
+
+.message {
+	color:white;
+	font-weight: bold;
+	width: 100%;
+	text-align: center;
+	background-color: #4188d2;
 }

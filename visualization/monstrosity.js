@@ -167,7 +167,7 @@ function updateBreadcrumbs(nodeArray, percentageString) {
       .attr("y", b.h / 2)
       .attr("dy", "0.35em")
       .attr("text-anchor", "middle")
-      .text(function(d) { return "<div>"+d.name+"</div>"; });
+      .text(function(d) { return d.name.substring(0,15); });
  
   // Set position for entering and updating nodes.
   g.attr("transform", function(d, i) {
@@ -306,9 +306,14 @@ chrome.runtime.onMessage.addListener(
                 "from a content script:" + sender.tab.url :
                 "from the extension");
     if (request.type == "csvData"){
-    	var csv = d3.csv.parseRows(request.csvfile);
-			var json = buildHierarchy(csv);
-			createVisualization(json);
+    	if(request.csvfile.length > 0){
+    	  $('.message').html("");
+		  	var csv = d3.csv.parseRows(request.csvfile);
+				var json = buildHierarchy(csv);
+				createVisualization(json);
+			}else{
+				$('.message').html("Sorry, we haven't recorded you visiting this site. Plase try another one.");
+			}
     }
   });
 
