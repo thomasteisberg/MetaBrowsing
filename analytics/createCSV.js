@@ -13,7 +13,12 @@ createCSV = function(startSite) {
 			for(var i = 0;i < results.rows.length;i++)
 			{
 				var row = results.rows.item(i);
-				sequence.push(row.taburl);
+				url = row.taburl;
+				//console.log(row.taburl);
+				url.split("-");
+				console.log(url);
+				sequence.push(url);
+				console.log("pushing");
 			}
 			var csvfile = fuckThaPolice(sequence, startSite);
 			chrome.runtime.sendMessage({type: "csvData", csvfile: csvfile});
