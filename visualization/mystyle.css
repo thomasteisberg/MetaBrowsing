@@ -3,6 +3,21 @@ body {
   color: white;
 }
 
+#logo{
+  display:block;
+  margin-left: auto;
+  margin-right:auto;
+  width: 480px;
+}
+
+.navlogo {
+  background-color: white;
+}
+
+.jumbotron {
+  text-align:center;
+}
+
 .wrapper {
   padding-left: 45px;
 }
@@ -55,5 +70,9 @@ body {
 .chart div:hover{
   background-color: #35D4A0;
   border-color: #006E4A;
+}
+
+.spacer {
+  height: 50px;
 }
 
