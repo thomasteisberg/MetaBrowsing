@@ -6,7 +6,7 @@ var radius = Math.min(width, height) / 2;
  
 // Breadcrumb dimensions: width, height, spacing, width of tip/tail.
 var b = {
-  w: 75, h: 30, s: 3, t: 10
+  w: 120, h: 30, s: 3, t: 10
 };
  
 // Mapping of step names to colors.
@@ -24,8 +24,6 @@ function createVisualization(json) {
  
   // Basic setup of page elements.
   initializeBreadcrumbTrail();
-  drawLegend();
-  d3.select("#togglelegend").on("click", toggleLegend);
  
   // Bounding circle underneath the sunburst, to make it easier to detect
   // when the mouse leaves the parent g.
@@ -169,7 +167,7 @@ function updateBreadcrumbs(nodeArray, percentageString) {
       .attr("y", b.h / 2)
       .attr("dy", "0.35em")
       .attr("text-anchor", "middle")
-      .text(function(d) { return d.name; });
+      .text(function(d) { return "<div>"+d.name+"</div>"; });
  
   // Set position for entering and updating nodes.
   g.attr("transform", function(d, i) {
@@ -192,49 +190,6 @@ function updateBreadcrumbs(nodeArray, percentageString) {
       .style("visibility", "");
  
 }
- 
-function drawLegend() {
- 
-  // Dimensions of legend item: width, height, spacing, radius of rounded rect.
-  var li = {
-    w: 75, h: 30, s: 3, r: 3
-  };
- 
-  var legend = d3.select("#legend").append("svg:svg")
-      .attr("width", li.w)
-      .attr("height", d3.keys(colors).length * (li.h + li.s));
- 
-  var g = legend.selectAll("g")
-      .data(d3.entries(colors))
-      .enter().append("svg:g")
-      .attr("transform", function(d, i) {
-              return "translate(0," + i * (li.h + li.s) + ")";
-           });
- 
-  g.append("svg:rect")
-      .attr("rx", li.r)
-      .attr("ry", li.r)
-      .attr("width", li.w)
-      .attr("height", li.h)
-      .style("fill", function(d) { return d.value; });
- 
-  g.append("svg:text")
-      .attr("x", li.w / 2)
-      .attr("y", li.h / 2)
-      .attr("dy", "0.35em")
-      .attr("text-anchor", "middle")
-      .text(function(d) { return d.key; });
-}
- 
-function toggleLegend() {
-  var legend = d3.select("#legend");
-  if (legend.style("visibility") == "hidden") {
-    legend.style("visibility", "");
-  } else {
-    legend.style("visibility", "hidden");
-  }
-}
- 
 // Take a 2-column CSV and transform it into a hierarchical structure suitable
 // for a partition layout. The first column is a sequence of step names, from
 // root to leaf, separated by hyphens. The second column is a count of how 
@@ -306,7 +261,6 @@ changeOriginUrl = function(){
 	
 	//generateCSV(originurl);
 	$('#sequence').html("");
-	$('#legend').html("");
 	$('#chart').html('<div id="explanation" style="visibility: hidden;"><span id="percentage"></span><br/> chance of getting here after visiting <span id="starturl"></span></div>');
 	
 	// Total size of all segments; we set this later, after loading the data.

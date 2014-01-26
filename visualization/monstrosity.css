@@ -42,7 +42,7 @@ right: 0;
   padding: 10px 0 0 3px;
 }
  
-#sequence text, #legend text {
+#sequence text{
   font-weight: 600;
   fill: #fff;
 }
