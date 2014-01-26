@@ -22,9 +22,7 @@ function getTopSiteData() {
 				var avg = (parseInt(time))/parseInt(visits);
 				var subArray = [avg, row.taburl];
 				siteTime.push(subArray);
-				console.log(siteTime[i]);
 			}
-			console.log(siteTime);
 			buildGraph(siteTime);
 		});
 	});

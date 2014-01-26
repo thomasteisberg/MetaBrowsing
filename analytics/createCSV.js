@@ -44,6 +44,7 @@ function fuckThaPolice(sequence, startSite)
 			else
 			{
 				//we've reached a loop/the end of a chain
+				currentPath += "|" + "end"
 				if(csv[currentPath] == null)
 				{
 					csv[currentPath] = 1;
@@ -68,6 +69,7 @@ function fuckThaPolice(sequence, startSite)
 			}
 			else if(currentPathWordLength == n)
 			{
+				currentPath += "|" + "end";
 				if(csv[currentPath] == null)
 				{
 					csv[currentPath] = 1;
