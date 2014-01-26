@@ -12,7 +12,7 @@ db.transaction(function (tx) {
 
 db.transaction(function (tx) {
 	tx.executeSql('SELECT * FROM raw', [], function (tx, results) {
-		var len = results.rows.length, i;
+		var len = results.rows.length;
 		var lastTimestamp = results.rows.item(0).timestamp;
 		for (i = 0; i < len; i++) {
 			var ts = results.rows.item(i).timestamp;
