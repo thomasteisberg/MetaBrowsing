@@ -135,10 +135,11 @@
     var db = openDatabase('focusHistoryDB', '1.0', 'Page Focus History', 2 * 1024 * 1024);
     db.transaction(function (tx) {
 			
-		tx.executeSql('SELECT * FROM raw', [], function (tx, results) {
+		tx.executeSql('SELECT * FROM raw ORDER BY timestamp DESC', [], function (tx, results) {
 				var len = results.rows.length;
 				var lastTimestamp = results.rows.item(0).timestamp;
 				var lastUrl = results.rows.item(0).taburl;
+				if(len > 25) len = 15;
 				for (i = 0; i < len; i++) {
 					var ts = results.rows.item(i).timestamp;
 					var turl = results.rows.item(i).taburl;
