@@ -1,21 +1,34 @@
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="../visualization/mystyle.css">
+		<link rel="stylesheet" type="text/css" href="../lib/bootstrap.css">
+
+		<ul class="nav nav-pills" style="margin:10px">
+		<li><a class="navlogo" href="../visualization/index.html"> <img src="../visualization/Logo.png" height="18px"> </a></li></ul>
+
 		<title>Preferences</title>
 		<script src = "../lib/jquery-2.1.0.js"></script>
 	</head>
 
 	<body>
-		Would you like to receive e-mail from us?
-		<form id="emailSelection">
-			<select id="dropdown">
-				<option value = "true">You bet!</option>
-				<option value = "false">Who's an e-mail?</option>
-			</select>
-			<input type="submit" value="Save">
-		</form>
+		
+		<div style="color:white; margin-left:20px">
+			<br>
+			Would you like to receive e-mail from us?
+			<br>
+			<form id="emailSelection">
+				<select id="dropdown">
+					<option value = "true">You bet!</option>
+					<option value = "false">Who's an e-mail?</option>
+				</select>
+				<input type="submit" value="Save">
+			</form>
 
-		<div id = "alerttext"></div>
-		<div id = "homelink"></div>
+			<div id = "alerttext"></div>
+			<div id = "homelink"></div>
+		</div>
+
+		
 
 		<script src="preferences.js"></script>
 	</body>
