@@ -41,7 +41,7 @@ body {
 .chart div {
   text-align:right;
   height: 24px;
-  padding: 0;
+  padding-right: 3px;
   background-color: #4188D2;
   margin-top: 35px;
   margin-bottom: 35px;

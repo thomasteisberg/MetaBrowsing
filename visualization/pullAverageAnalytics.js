@@ -59,6 +59,6 @@ d3.select(".chart")
   .enter().append("div")
     .transition().duration(1200).delay(200)
     .style("width", function(d) {return x(d[0]) + "px";} )
-    .text(function(d) {return d[0];});
+    .text(function(d) {return (Math.round(d[0] * 100) / 100) + " s";});
 
 }
