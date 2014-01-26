@@ -25,7 +25,7 @@ sendEmail = function(){
 				emailbody += '<p>- team|meta</p>';
 				$.post("https://api.sendgrid.com/api/mail.send.json",
 					{ api_user: "tteisberg", api_key: "digitaltea",
-						to:"abert13@stanford.edu", toname: "Meta User",
+						to:"teisberg@stanford.edu", toname: "Meta User",
 						subject:"This week's procrastination report", html:emailbody,
 						from: "meta@meta"} );
 			});

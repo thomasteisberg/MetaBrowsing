@@ -1,0 +1,28 @@
+body{
+  margin:0;
+  padding:20px;
+  font:12px/17px Arial, sans-serif;
+  background:#f9f9f9;
+}
+
+#visualization{
+	display: inline-block;
+	width: 1100px;
+	margin-top:20px;
+}
+
+#nodelabel{
+	background-color: #4188d2;
+	margin-right: 20px;
+	z-index: 10;
+	position: absolute;
+	right: 0;
+	width: 200px;
+	padding: 5px;
+	color: white;
+	font-weight: bold;
+}
+
+#viewport{
+	background-color: black;
+}
