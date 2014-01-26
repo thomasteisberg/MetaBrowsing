@@ -13,16 +13,27 @@ loadFromDb = function () {
 			//$('#history-container').empty(); // Clear the old listing
 			var len = results.rows.length, i;
 			for (i = 0; i < len; i++) {
-		  	//$('#history-container').append(
-			//	'<div class="entry"><div class="timestamp">'
-			//		+ results.rows.item(i).timestamp + '</div>'
-			//		+ results.rows.item(i).taburl + "</div>");
+				var date = new Date(results.rows.item(i).timestamp * 1000);
+				var month = twoDigits(date.getMonth() + 1);
+				var day = twoDigits(date.getDate());
+				var year = date.getFullYear();
+				var hour = twoDigits(date.getHours());
+				var minutes = twoDigits(date.getMinutes());
 				$('.data').append(
-					results.rows.item(i).timestamp + "	" +
+					month + ":" + day + ":" + year + "  "
+						+ hour + ":" + minutes + "    |" +
 						results.rows.item(i).taburl + "<br>");
 			}
     });
   });
+}
+
+function twoDigits(num)
+{
+	n = String(num);
+	if(n.length < 2)
+		n = "0" + n;
+	return n;
 }
 
 // Wait for the window to be loaded so we know jQuery is available
