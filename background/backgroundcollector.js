@@ -87,7 +87,7 @@ var fridayMailSent = false;
 
 emailScheduler = function() {
 	d = new Date();
-	if(!fridayMailSent && d.getDay() == 5){
+	if(!fridayMailSent && d.getDay() == 0){
 		chrome.storage.local.get("emailBool", function(a){
 			if(a){
 				setTimeout(sendEmail, 1000);
