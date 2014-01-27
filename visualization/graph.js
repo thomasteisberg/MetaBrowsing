@@ -139,7 +139,7 @@
 				var len = results.rows.length;
 				var lastTimestamp = results.rows.item(0).timestamp;
 				var lastUrl = results.rows.item(0).taburl;
-				if(len > 40) len = 40;
+				if(len > 70) len = 70;
 				for (i = 0; i < len; i++) {
 					var ts = results.rows.item(i).timestamp;
 					var turl = results.rows.item(i).taburl;
