@@ -3,11 +3,6 @@ jq=document.createElement('script');
 jq.src='../lib/jquery-2.1.0.js';
 document.getElementsByTagName('head')[0].appendChild(jq);
 
-// Load email parser
-jq=document.createElement('script');
-jq.src='../visualization/email.js';
-document.getElementsByTagName('head')[0].appendChild(jq);
-
 // Settings
 var QUERY_FREQUENCY = 100; // How often (in ms) to query the current tab
 var FOCUS_TIME = 1000; // How long (in ms) should the user be looking at a
@@ -71,31 +66,10 @@ var getPage = function () {
 }
 
 // Initiate looping getPage -> recordPage -> getPage calls
-window.onload = function(){getPage(); emailScheduler();};
+window.onload = getPage;
 
 // Link button click to opening the raw data display page (probably temporary)
 chrome.browserAction.onClicked.addListener(function(activeTab)
 {
     chrome.tabs.create({ url: "../visualization/index.html" });
 });
-
-
-
-// Email handling
-
-var fridayMailSent = false;
-
-emailScheduler = function() {
-	d = new Date();
-	if(!fridayMailSent && d.getDay() == 0){
-		chrome.storage.local.get("emailBool", function(a){
-			if(a){
-				setTimeout(sendEmail, 1000);
-				fridayMailSent = true;
-			}
-		});
-	}else{
-		fridayMailSent = false;
-	}
-	setTimeout(emailScheduler, 1000*60*60*12);
-}

@@ -30,7 +30,7 @@
     "chrome_oauth_receiver.html"
   ],
   
-  "content_security_policy": "script-src 'self' https://www.dropbox.com https://api.embed.ly 'unsafe-eval'; object-src 'self'",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwso0DtjeFAyyWARlExwlZ9+Hop3DUg85E4BAr+EVeFNr2lxxzWEd1yU+oOHJYs9LeC6VdQW0OJlLLgmHeGB5C71r5erYt12+fLRKX6ztVKMo0RXDePhspqugouFFmAlFnFhe82oV6RwQudpO/VuegXZvJy6BsAO2eeywYb73PoCd6JIsEdSpZ95r5sWnGGBkCuWoXqxfU2F9nVYdbzP9Z9plAXmincoCfy++5yYfkSHYbBkqxtvA7tIzZDD0nktJqLJokcH70mbNgnLcmq7+zr9JQ5EFAA4s+09JU71gs5PS9cKeWcPXLiYoCSLUc85DGFREjTZuiOfAnEbysF5dJQIDAQAB"
 

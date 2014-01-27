@@ -1,5 +1,0 @@
-Chrome Messages:
-
-(all identified by request.type field)
-
-cacheDataReq: Requests currently cached focus history
