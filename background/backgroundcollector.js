@@ -27,6 +27,8 @@ var lastUrlFocusBeginning = 0;
 // stores it if so
 // Also schedules the next call to getPage()
 var recordPage = function (tabs) {
+	if(tabs.length < 1) return;
+
 	// Current timestamp
 	var millis = +new Date();
 	
