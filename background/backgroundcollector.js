@@ -48,7 +48,7 @@ var recordPage = function (tabs) {
 	if(millis - lastUrlFocusBeginning > FOCUS_TIME &&
 			(historyLog.length == 0 ||
 				parsedurl != historyLog[historyLog.length - 1].taburl)){
-				if(parsedurl != "" && parsedurl != "mlabibnomhfmephibijgghejmmmbigpi"){
+				if(parsedurl != "" && parsedurl != "mbebibdoedjcppilmibkdobpgooplbhi"){
 					historyLog[historyLog.length] = {taburl: parsedurl, timestamp: Math.round(lastUrlFocusBeginning/1000)};
 					db.transaction(function (tx) {
 						tx.executeSql('INSERT INTO raw (timestamp, taburl) VALUES (?, ?)', [Math.round(lastUrlFocusBeginning/1000), parsedurl]);
