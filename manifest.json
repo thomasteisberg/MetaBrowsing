@@ -2,7 +2,7 @@
 
   "name": "MetaBrowsing",
   "description": "Become more productive by viewing your browsing history and trends.",
-  "version": "1.0",
+  "version": "1.0.1",
   "icons": {"16":"Meta_Icon16.png",
   					"48":"Meta_Icon48.png",
   					"128":"Meta_Icon128.png"},
